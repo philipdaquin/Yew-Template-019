@@ -8,7 +8,8 @@ use crate::{
     },
     router::{AppRoute, 
         home::Home,
-        about::About
+        about::About,
+        switch,
     }
 };
 
@@ -29,17 +30,15 @@ impl Component for App {
     }
     fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
-            <>
+            
+            <BrowserRouter>
                 <Navbar/>
-                    <BrowserRouter>
-                        <Switch<AppRoute> render={Switch::render(|routes| match routes { 
-                            AppRoute::Home => html! { <h1>{ "Home" }</h1> },
-                            AppRoute::About => html! { <h1>{ "About" }</h1> },
-                        })} />
-                    </BrowserRouter>
+                    <Switch<AppRoute> render={Switch::render(switch)} />
                 <Footer/>
-            </>
+            </BrowserRouter>
         }
     }
 }
+
+
 
