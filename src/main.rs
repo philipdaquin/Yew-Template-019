@@ -2,9 +2,9 @@ mod app;
 mod api;
 mod types;
 mod service;
-mod components;
+pub mod components;
 mod hooks;
-
+pub mod router;
 
 
 use crate::app::App;

@@ -17,10 +17,10 @@
          
 
 
-        <script type="module">import init from '/index-5930b02ca3c57227.js';init('/index-5930b02ca3c57227_bg.wasm');</script>
+        <script type="module">import init from '/index-18cb216e285ff3e3.js';init('/index-18cb216e285ff3e3_bg.wasm');</script>
     
-<link rel="preload" href="/index-5930b02ca3c57227_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="/index-5930b02ca3c57227.js"></head>
+<link rel="preload" href="/index-18cb216e285ff3e3_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/index-18cb216e285ff3e3.js"></head>
     <body>
         <header>
 
@@ -39,7 +39,33 @@
         <script data-trunk="" rel="inline" type="module" src="assets/js/main.js"></script>
 
         <!-- JS Interop -->
-        <!-- <script crossorigin="false" src="assets/js/main.js"></script> -->
-        <!-- <link data trunk rel="trunk-dist" href="assets/js/main.js"></script> --> 
+        <script crossorigin="false" src="assets/js/main.js"></script>
+        <link data="" trunk="" rel="trunk-dist" href="assets/js/main.js"> 
     
-</body></html>
+<script>(function () {
+    var url = 'ws://' + window.location.host + '/_trunk/ws';
+    var poll_interval = 5000;
+    var reload_upon_connect = () => {
+        window.setTimeout(
+            () => {
+                // when we successfully reconnect, we'll force a
+                // reload (since we presumably lost connection to
+                // trunk due to it being killed, so it will have
+                // rebuilt on restart)
+                var ws = new WebSocket(url);
+                ws.onopen = () => window.location.reload();
+                ws.onclose = reload_upon_connect;
+            },
+            poll_interval);
+    };
+
+    var ws = new WebSocket(url);
+    ws.onmessage = (ev) => {
+        const msg = JSON.parse(ev.data);
+        if (msg.reload) {
+            window.location.reload();
+        }
+    };
+    ws.onclose = reload_upon_connect;
+})()
+</script></body></html>
