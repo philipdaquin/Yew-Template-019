@@ -1,0 +1,18 @@
+mod app;
+mod api;
+mod types;
+mod service;
+mod components;
+mod hooks;
+
+
+
+use crate::app::App;
+
+use wasm_bindgen::prelude::*;
+
+pub fn main() -> Result<(), JsValue> {
+    wasm_logger::init(wasm_logger::Config::default());
+    yew::start_app::<App>();
+    Ok(())
+}
