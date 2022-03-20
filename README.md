@@ -1,6 +1,8 @@
-## Yew-Template-019
+# Yew-Template-019
 
-#UnOfficial Yew Template 
 ## This inlcludes:
 - router etc
-- 
+- components
+- hooks and custom hooks 
+- js-interop
+- many more
