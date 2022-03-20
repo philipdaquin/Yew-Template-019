@@ -1,6 +1,6 @@
 # Yew-Template-019
 
-## This inlcludes:
+## This includes:
 - router etc
 - components
 - hooks and custom hooks 
